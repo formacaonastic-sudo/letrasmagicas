@@ -1,0 +1,627 @@
+<!doctype html><html lang="pt-PT"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"><title>Letras Mágicas no Recreio — Grafia Guiada</title><style>
+:root{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#17395a}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}body{background:radial-gradient(ellipse at 25% 20%,#8fe6c0 0%,transparent 40%),linear-gradient(135deg,#147b63,#075b79 65%,#103b70);display:flex;flex-direction:column}.top{height:62px;flex:none;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px clamp(10px,3vw,28px);background:#f9fdffed;box-shadow:0 3px 16px #082c4b22}.brand{font-weight:900;font-size:clamp(15px,2.5vw,22px);white-space:nowrap}.actions{display:flex;gap:7px}.btn{border:0;border-radius:13px;padding:10px 14px;font-weight:900;font-size:clamp(13px,1.7vw,17px);cursor:pointer;color:white;background:#1679be;box-shadow:0 3px 0 #0d5484}.btn:active{transform:translateY(2px);box-shadow:0 1px 0 #0d5484}.btn.secondary{background:#e77828;box-shadow:0 3px 0 #ad5114}.stage{flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center;padding:8px}.stars{position:absolute;inset:0;pointer-events:none;overflow:hidden}.star{position:absolute;width:3px;height:3px;background:#fff;border-radius:50%;animation:twinkle var(--dur) ease-in-out infinite alternate;animation-delay:var(--delay);box-shadow:0 0 9px 2px #ffffff90}@keyframes twinkle{from{opacity:.16;transform:scale(.6)}to{opacity:1;transform:scale(1.8)}}.panel{position:relative;width:min(96vw,900px);height:100%;max-height:720px;border-radius:24px;background:linear-gradient(145deg,#ffffff,#f2faff);border:2px solid #ffffff50;box-shadow:0 12px 35px #002f5070;display:flex;justify-content:center;align-items:center;overflow:hidden}.writing{width:100%;height:100%;max-height:100%;touch-action:none;user-select:none;overflow:visible}.letter-outline{fill:none;stroke:#143d57;stroke-width:63;stroke-linecap:round;stroke-linejoin:round}.letter-fill{fill:none;stroke:#ffffff;stroke-width:56;stroke-linecap:round;stroke-linejoin:round}.letter-inner{fill:none;stroke:#ffffff;stroke-opacity:1;stroke-width:46;stroke-linecap:round;stroke-linejoin:round}.guide{fill:none;stroke:#111111;stroke-width:6.5;stroke-linecap:round;stroke-dasharray:8 12;pointer-events:none}.written{fill:none;stroke:#20bf70;stroke-width:52;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}.arrow{fill:#d85870;stroke:#fff;stroke-width:1;pointer-events:none}.start{fill:#f34e79;stroke:#fff;stroke-width:5;filter:url(#softglow)}.tip{fill:#ff5683;stroke:white;stroke-width:5;filter:url(#softglow);pointer-events:none}.hint{position:absolute;bottom:13px;left:50%;transform:translateX(-50%);color:#fff;font-weight:800;font-size:clamp(12px,2.3vw,17px);background:#073f6bbd;padding:8px 15px;border-radius:99px;text-align:center;pointer-events:none}.footer{height:43px;flex:none;display:flex;align-items:center;justify-content:center;background:#063d73;color:#fff;font-weight:900;text-align:center;font-size:clamp(11px,2.5vw,17px);letter-spacing:.1px;padding:3px}.heart{display:inline-block;animation:beat 1.2s infinite}@keyframes beat{50%{transform:scale(1.25)}}.celebrate{position:absolute;inset:0;pointer-events:none;display:grid;place-items:center;opacity:0;transition:opacity .25s}.celebrate.show{opacity:1}.spark{position:absolute;font-size:clamp(18px,4vw,35px);animation:fly 1.2s ease-out forwards}@keyframes fly{from{opacity:1;transform:translate(0,0) scale(.5)}to{opacity:0;transform:translate(var(--x),var(--y)) rotate(180deg) scale(1.3)}}@media(max-width:550px){.top{height:57px}.btn{padding:9px}.panel{border-radius:15px}.stage{padding:5px}.hint{bottom:8px}.footer{height:46px}}
+ .choice{display:flex;gap:6px;align-items:center}.choice button{font-size:20px;min-width:43px;padding:7px 12px}.choice button[aria-pressed="true"]{background:#198b61;box-shadow:0 3px 0 #0a6141}.dot-outline{fill:#143d57}.dot-white{fill:white}.dot-green{fill:#20bf70}.dot-guide{fill:none;stroke:#111;stroke-width:5;stroke-dasharray:5 7}.dot-hit{fill:transparent;cursor:pointer} @media(max-width:550px){.choice button{min-width:35px;padding:7px 8px;font-size:17px}.brand{font-size:13px}.actions{gap:4px}.btn{padding:8px}} 
+/* The p follows the reference: a slender stem, a low entry and an open exit. */
+.writing .letter-outline{stroke-width:58}
+.writing .letter-fill{stroke-width:52}
+.writing .written{stroke-width:48}
+.writing .guide{stroke-width:4.6;stroke-dasharray:6 9}
+.writing .start{r:16}
+.writing .tip{r:15}
+.panel.is-guided .hint{max-width:calc(100% - 24px);white-space:normal;width:max-content;font-size:clamp(12px,2.1vw,17px)}
+.top{min-height:62px;height:auto;flex-wrap:wrap}
+.actions{align-items:center}
+.choice button:focus-visible,.btn:focus-visible{outline:3px solid #ffb53d;outline-offset:3px}
+@media(max-width:550px){.top{padding:6px 9px;gap:5px}.brand{width:100%;text-align:center}.actions{width:100%;justify-content:center}.choice{gap:4px}.choice button{min-width:34px;padding:6px 8px}.actions>.btn{padding:8px 9px}.panel.is-guided .hint{bottom:8px;padding:7px 10px}}
+
+@media(max-width:550px){.actions{flex-wrap:wrap;row-gap:6px}.choice{justify-content:center;flex-wrap:wrap}}
+
+.btn.demo{min-width:183px;background:#6853b9;box-shadow:0 3px 0 #43347e}
+.btn.assist{background:#18794e;box-shadow:0 3px 0 #09552f}
+.btn{min-height:44px}.choice button{min-height:44px;min-width:44px}
+.actions{flex-wrap:wrap;justify-content:flex-end}.choice{flex-wrap:wrap}
+.star{animation:none;opacity:.25}.heart{animation:none;margin:0 .22em}
+.start{animation:ready 1.6s ease-in-out infinite}
+@keyframes ready{50%{stroke-width:8}}
+.celebrate{transition:none}
+.panel.is-guided .hint{border-radius:16px;line-height:1.3;max-width:calc(100% - 24px)}
+@media(max-width:700px){.top{padding:5px 8px}.brand{width:100%;text-align:center}.actions{width:100%;justify-content:center;gap:6px}.choice{justify-content:center;gap:4px}.btn.demo,.btn.assist{font-size:13px;padding:8px 10px}.choice button{min-width:40px;padding:6px 9px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* Compact Recreio Digital header and large navigation targets. */
+.portal-header{flex:none;min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:8px clamp(12px,2.4vw,28px);background:linear-gradient(115deg,#073b80,#0861b9);color:#fff;box-shadow:0 3px 16px #052c5b35;z-index:2}
+.portal-brand{display:flex;align-items:center;gap:11px;color:#fff;text-decoration:none;min-width:0}
+.portal-owl{font-size:36px;line-height:1;filter:drop-shadow(0 2px 2px #002d6060)}
+.portal-wordmark{font-size:clamp(20px,2.6vw,27px);font-weight:900;line-height:1.1;white-space:nowrap}
+.portal-wordmark strong{color:#ffd33d}
+.portal-game-title{display:block;margin-top:4px;font-size:13px;font-weight:750;line-height:1.2}
+.portal-nav{display:flex;align-items:center;gap:10px}
+.portal-link{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:9px 16px;border:2px solid transparent;border-radius:13px;font-weight:900;font-size:17px;line-height:1.2;text-decoration:none;white-space:nowrap;box-shadow:0 4px 0 #002c65;transition:transform .12s,box-shadow .12s}
+.portal-back{background:#ffd447;border-color:#ffeaa2;color:#153859}
+.portal-home{background:#fff;border-color:#aee0ff;color:#08447c}
+.portal-link:active{transform:translateY(2px);box-shadow:0 2px 0 #002c65}
+.portal-link:focus-visible,.portal-brand:focus-visible{outline:3px solid #ffdd56;outline-offset:4px}
+.top{min-height:0;justify-content:center;padding:7px clamp(10px,2vw,24px)}
+.top .actions{width:100%;justify-content:center}
+@media(max-width:700px){.portal-header{gap:9px;padding:8px 10px}.portal-brand{gap:8px}.portal-owl{font-size:31px}.portal-wordmark{font-size:22px}.portal-game-title{font-size:12px}.portal-nav{gap:7px}.portal-link{font-size:14px;min-height:44px;padding:9px 11px}.top{padding:6px 8px}}
+@media(max-width:560px){.portal-header{flex-direction:column;gap:8px}.portal-nav{width:100%;justify-content:center}.portal-brand{justify-content:center}.portal-owl{font-size:30px}.portal-game-title{text-align:center}.portal-link{flex:1;max-width:210px;padding:9px 7px}}
+
+.letter-bank{display:flex;gap:6px;flex:none}.bank-button{padding:8px 12px;border:2px solid #85bde6;background:#e7f4ff;color:#164f80;box-shadow:0 3px 0 #a1c9e7}
+.bank-button[aria-pressed="true"]{background:#075caa;border-color:#075caa;color:white;box-shadow:0 3px 0 #063d73}
+.choice button[hidden]{display:none}.choice{justify-content:center}
+@media(max-width:700px){.letter-bank{gap:5px}.bank-button{font-size:14px;padding:8px 10px}}
+
+/* Instructions occupy their own space, entirely below the writing panel. */
+.stage{flex-direction:column;gap:8px}
+.panel{flex:1;min-height:0;height:auto}
+.instruction-area{flex:none;display:flex;align-items:center;justify-content:center;min-height:62px;width:min(96vw,900px);padding:2px 0 4px}
+.instruction-area .hint{position:static;inset:auto;transform:none;width:100%;max-width:100%;min-height:46px;margin:0;padding:10px 16px;display:flex;align-items:center;justify-content:center;white-space:normal;line-height:1.3;font-size:clamp(14px,2.1vw,17px);background:#07508d;border:2px solid #a8d8f8;border-radius:16px;box-shadow:0 3px 0 #053665;text-align:center}
+/* A friendly owl and three stars celebrate the completed letter. */
+.celebrate{padding:18px;isolation:isolate}
+.success-card{position:relative;z-index:1;width:min(88%,360px);padding:17px 25px 22px;text-align:center;background:linear-gradient(145deg,#fffdf0,#e4f7ff);border:5px solid #ffd65c;border-radius:30px;box-shadow:0 12px 30px #063b6d55;transform:scale(.88);transition:transform .35s ease-out}
+.celebrate.show .success-card{transform:scale(1)}
+.success-stars{color:#ffbb24;font-size:clamp(28px,4vw,43px);font-weight:900;line-height:1.2;letter-spacing:4px;text-shadow:0 2px 0 #e29b12}
+.success-stars span{display:inline-block;font-size:1.25em;transform:translateY(-3px)}
+.success-owl{font-size:clamp(62px,10vw,94px);line-height:1.15;margin:6px 0;filter:drop-shadow(0 5px 4px #0e5d8e22)}
+.success-title{font-size:clamp(24px,3.8vw,34px);font-weight:950;color:#07549c;line-height:1.15}
+.success-message{font-size:clamp(16px,2.2vw,20px);font-weight:800;color:#147747;margin-top:8px;line-height:1.3}
+.spark{z-index:2;animation-duration:1.6s}
+@media(max-width:550px){.stage{gap:6px}.instruction-area{min-height:60px;padding:0 0 3px}.instruction-area .hint{padding:8px 11px;border-radius:13px}.success-card{padding:13px 16px 17px;border-width:4px;border-radius:24px}}
+
+/* Give the letter more room while keeping the instruction in its own row. */
+.stage{padding:5px 8px;gap:5px}
+.panel{width:min(98vw,1040px);max-height:none}
+.instruction-area{width:min(98vw,1040px);min-height:52px;padding:0 0 3px}
+.instruction-area .hint{min-height:44px;padding:7px 13px}
+.top{padding-top:5px;padding-bottom:5px}
+@media(max-width:550px){.stage{padding:4px 5px;gap:5px}.instruction-area{min-height:54px;padding:0 0 3px}.instruction-area .hint{padding:7px 10px}}
+</style></head><body><header class="portal-header">
+<a class="portal-brand" href="https://www.recreiodigital.pt/">
+  <span class="portal-owl" aria-hidden="true">🦉</span>
+  <span><span class="portal-wordmark">Recreio <strong>Digital</strong></span><span class="portal-game-title">✏️ Letras Mágicas</span></span>
+</a>
+<nav class="portal-nav" aria-label="Navegação do Recreio Digital">
+  <a class="portal-link portal-back" id="backToGames" href="https://www.recreiodigital.pt/#jogos">← Voltar aos jogos</a>
+  <a class="portal-link portal-home" href="https://www.recreiodigital.pt/">⌂ Página inicial</a>
+</nav>
+</header><div class="top" role="group" aria-label="Letras e ferramentas do jogo"><div class="actions"><div class="letter-bank" role="group" aria-label="Grupo de letras"><button class="btn bank-button" id="vowelBank" aria-pressed="false" aria-label="Mostrar vogais">Vogais</button><button class="btn bank-button" id="consonantBank" aria-pressed="true" aria-label="Mostrar consoantes">Consoantes</button></div><div class="choice" role="group" aria-label="Escolher letra"><button class="btn" id="chooseA" aria-pressed="false" aria-label="Letra a">a</button><button class="btn" id="chooseCapitalA" aria-pressed="false" aria-label="Letra A maiúscula">A</button><button class="btn" id="chooseE" aria-pressed="false" aria-label="Letra e">e</button><button class="btn" id="chooseCapitalE" aria-pressed="false" aria-label="Letra E maiúscula">E</button><button class="btn" id="chooseI" aria-pressed="false" aria-label="Letra i">i</button><button class="btn" id="chooseCapitalI" aria-pressed="false" aria-label="Letra I maiúscula">I</button><button class="btn" id="chooseO" aria-pressed="false" aria-label="Letra o">o</button><button class="btn" id="chooseCapitalO" aria-pressed="false" aria-label="Letra O maiúscula">O</button><button class="btn" id="chooseU" aria-pressed="false" aria-label="Letra u">u</button><button class="btn" id="chooseCapitalU" aria-pressed="false" aria-label="Letra U maiúscula">U</button><button class="btn" id="chooseP" aria-pressed="false" aria-label="Letra p">p</button><button class="btn" id="chooseCapitalP" aria-pressed="false" aria-label="Letra P maiúscula">P</button><button class="btn" id="chooseD" aria-pressed="true" aria-label="Letra d">d</button><button class="btn" id="chooseCapitalD" aria-pressed="false" aria-label="Letra D maiúscula">D</button><button class="btn" id="chooseT" aria-pressed="false" aria-label="Letra t">t</button><button class="btn" id="chooseCapitalT" aria-pressed="false" aria-label="Letra T maiúscula">T</button><button class="btn" id="chooseL" aria-pressed="false" aria-label="Letra l">l</button><button class="btn" id="chooseCapitalL" aria-pressed="false" aria-label="Letra L maiúscula">L</button><button class="btn" id="chooseM" aria-pressed="false" aria-label="Letra m">m</button><button class="btn" id="chooseCapitalM" aria-pressed="false" aria-label="Letra M maiúscula">M</button><button class="btn" id="chooseV" aria-pressed="false" aria-label="Letra v">v</button><button class="btn" id="chooseCapitalV" aria-pressed="false" aria-label="Letra V maiúscula">V</button></div><button class="btn demo" id="demo" aria-label="Ver como se faz">▶ Ver como se faz</button><button class="btn assist" id="assist" aria-label="Mais ajuda no traçado" aria-pressed="true">🖐️ Com ajuda</button><button class="btn secondary" id="restart" aria-label="Recomeçar letra">↻ Repetir</button><button class="btn" id="sound" aria-label="Ativar ou desativar som">🔊</button></div></div><main class="stage"><div class="stars" id="stars"></div><section class="panel"><svg id="svg" class="writing" viewBox="0 0 520 460" preserveAspectRatio="xMidYMid meet" aria-label="Letra manuscrita com tracejado preto e preenchimento verde"><defs><linearGradient id="rainbow" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff487b"/><stop offset="25%" stop-color="#ffb53d"/><stop offset="50%" stop-color="#50d77c"/><stop offset="75%" stop-color="#3ba4f5"/><stop offset="100%" stop-color="#a16aff"/></linearGradient><filter id="softglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g id="notebook" pointer-events="none"><line x1="24" y1="88" x2="496" y2="88" stroke="#a9d9f7" stroke-width="2"/><line x1="24" y1="183" x2="496" y2="183" stroke="#a9d9f7" stroke-width="2"/><line x1="24" y1="278" x2="496" y2="278" stroke="#f6a5cb" stroke-width="2" stroke-dasharray="9 7"/><line x1="24" y1="373" x2="496" y2="373" stroke="#77bfea" stroke-width="2.6"/></g><g id="letter"><path id="shape" class="letter-outline" d="M 91 372 C 156 360 214 326 256 251 C 297 176 313 89 275 70 C 228 42 185 77 181 146 C 172 224 190 314 246 349 C 311 391 393 337 401 238"/><path class="letter-fill" d="M 91 372 C 156 360 214 326 256 251 C 297 176 313 89 275 70 C 228 42 185 77 181 146 C 172 224 190 314 246 349 C 311 391 393 337 401 238"/><path id="paint" class="written" d="M 91 372 C 156 360 214 326 256 251 C 297 176 313 89 275 70 C 228 42 185 77 181 146 C 172 224 190 314 246 349 C 311 391 393 337 401 238"/><path class="guide" d="M 91 372 C 156 360 214 326 256 251 C 297 176 313 89 275 70 C 228 42 185 77 181 146 C 172 224 190 314 246 349 C 311 391 393 337 401 238"/><g id="dot" style="display:none" pointer-events="none"><circle class="dot-outline" cx="244" cy="77" r="29"/><circle class="dot-white" cx="244" cy="77" r="25"/><circle id="dotPaint" class="dot-green" cx="244" cy="77" r="24" style="display:none"/><circle id="dotGuide" class="dot-guide" cx="244" cy="77" r="13"/></g><g id="arrows"></g><circle id="start" class="start" r="14" cx="91" cy="372"/><circle id="tip" class="tip" r="13" cx="91" cy="372"/></g></svg><div class="celebrate" id="celebrate" aria-hidden="true">
+  <div class="success-card">
+    <div class="success-stars" aria-hidden="true">★ <span>★</span> ★</div>
+    <div class="success-owl" aria-hidden="true">🦉</div>
+    <div class="success-title">Conseguiste!</div>
+    <div class="success-message" id="successMessage">Que bela letra!</div>
+  </div>
+</div></section><div class="instruction-area"><div class="hint" id="hint" role="status" aria-live="polite">👆 Começa na bolinha rosa e segue os pontos!</div></div></main><footer class="footer">Feito com <span class="heart">❤️</span> para aprender e brincar · Recreio Digital</footer><script>
+
+'use strict';
+
+// Keep the school-year return route when this game is opened with ?ano=...
+function configurePortalNavigation(){
+  const base='https://www.recreiodigital.pt/';
+  const routes={pre:'pre-escolar','pre-escolar':'pre-escolar','1':'1-ano','2':'2-ano','3':'3-ano','4':'4-ano','1-ano':'1-ano','2-ano':'2-ano','3-ano':'3-ano','4-ano':'4-ano'};
+  const requested=new URLSearchParams(location.search).get('ano');
+  let route=Object.prototype.hasOwnProperty.call(routes,requested)?routes[requested]:null;
+  if(!route&&document.referrer){
+    try{
+      const source=new URL(document.referrer);
+      if(['recreiodigital.pt','www.recreiodigital.pt'].includes(source.hostname)){
+        const match=source.pathname.match(/^\/(pre-escolar|[1-4]-ano)(?:\/|$)/);
+        if(match)route=match[1];
+      }
+    }catch{}
+  }
+  document.getElementById('backToGames').href=route?base+route+'/index.html':base+'#jogos';
+}
+configurePortalNavigation();
+
+const svg=document.getElementById('svg');
+const shape=document.getElementById('shape');
+const paint=document.getElementById('paint');
+const tip=document.getElementById('tip');
+const arrows=document.getElementById('arrows');
+const start=document.getElementById('start');
+const hint=document.getElementById('hint');
+const celebrate=document.getElementById('celebrate');
+const guide=document.querySelector('.guide');
+const dot=document.getElementById('dot');
+const dotPaint=document.getElementById('dotPaint');
+const dotGuide=document.getElementById('dotGuide');
+const panel=document.querySelector('.panel');
+const NS='http://www.w3.org/2000/svg';
+const notebookLines=Array.from(document.querySelectorAll('#notebook line'));
+const defaultRows=notebookLines.map(line=>({
+  y:line.getAttribute('y1'),stroke:line.getAttribute('stroke'),
+  dash:line.getAttribute('stroke-dasharray'),width:line.getAttribute('stroke-width')
+}));
+
+// Lowercase e, copied from the model with a tall loop and a low right exit.
+const E_RISE='M 53 419 C 190 421 326 374 326 133 C 326 74 296 48 259 48';
+const E_RETURN='M 259 48 C 203 44 181 93 181 154 C 181 293 226 419 340 419 C 422 420 491 364 492 261';
+const E_PATH=E_RISE+' C 203 44 181 93 181 154 C 181 293 226 419 340 419 C 422 420 491 364 492 261';
+// Lowercase i: enter from the left, rise, descend, curve out, then add the dot.
+const I_ENTRY='M 85 537 C 170 509 214 464 214 346 L 214 181';
+const I_EXIT='M 214 181 L 214 459 C 214 511 235 540 273 540 C 315 541 341 492 361 446';
+const I_PATH=I_ENTRY+' L 214 459 C 214 511 235 540 273 540 C 315 541 341 492 361 446';
+const I_GUIDE='M 85 537 C 170 509 214 464 214 346 '+I_EXIT;
+
+// Capital E has its own button and is separate from the lowercase e.
+const CAPITAL_E_TOP='M 135 69 C 88 74 59 109 59 151 C 59 207 86 233 141 231 C 241 231 362 203 364 119 C 366 65 303 57 243 93 C 192 125 152 190 151 235';
+const CAPITAL_E_MIDDLE='M 151 235 C 147 283 213 350 267 349 C 295 349 306 338 306 315 C 306 283 283 282 256 288 C 230 294 201 303 178 318';
+const CAPITAL_E_BOTTOM='M 178 318 C 137 346 107 386 96 431 C 72 525 127 616 216 618 C 306 622 363 590 376 517 C 393 453 348 423 311 426 C 281 430 264 449 250 463';
+const CAPITAL_E_PATH=CAPITAL_E_TOP+' C 147 283 213 350 267 349 C 295 349 306 338 306 315 C 306 283 283 282 256 288 C 230 294 201 303 178 318 C 137 346 107 386 96 431 C 72 525 127 616 216 618 C 306 622 363 590 376 517 C 393 453 348 423 311 426 C 281 430 264 449 250 463';
+// Lowercase u follows the two tall stems and the final small right curve.
+const U_ENTRY='M 123 481 C 189 411 241 310 241 236 L 241 92';
+const U_BOWL='M 241 92 L 241 395 C 241 454 270 485 316 485 C 385 485 436 434 436 350 L 436 92';
+const U_EXIT='M 436 92 L 436 400 C 436 450 459 476 493 476 C 539 476 552 435 547 374';
+const U_PATH=U_ENTRY+' L 241 395 C 241 454 270 485 316 485 C 385 485 436 434 436 350 L 436 92 L 436 400 C 436 450 459 476 493 476 C 539 476 552 435 547 374';
+const U_GUIDE='M 123 481 C 189 411 241 310 241 236 M 241 92 L 241 395 C 241 454 270 485 316 485 C 385 485 436 434 436 350 L 436 92 M 436 350 L 436 400 C 436 450 459 476 493 476 C 539 476 552 435 547 374';
+
+// Capital U has an entrance curl, a large bowl, and a separate right curl.
+const CAPITAL_U_START='M 95 166 C 64 166 41 143 41 104 C 41 66 61 50 90 46 C 128 45 164 81 164 119 L 164 461 C 164 525 197 568 247 568';
+const CAPITAL_U_RISE='M 247 568 C 329 568 368 500 368 371 L 368 42';
+const CAPITAL_U_EXIT='M 368 42 L 368 501 C 368 547 394 567 429 565 C 472 566 498 543 498 497 C 498 467 483 449 456 449';
+const CAPITAL_U_PATH=CAPITAL_U_START+' C 329 568 368 500 368 371 L 368 42 L 368 501 C 368 547 394 567 429 565 C 472 566 498 543 498 497 C 498 467 483 449 456 449';
+const CAPITAL_U_GUIDE=CAPITAL_U_START+' C 329 568 368 500 368 371 L 368 42 M 368 371 L 368 501 C 368 547 394 567 429 565 C 472 566 498 543 498 497 C 498 467 483 449 456 449';
+// The o follows the supplied school handwriting model: one counterclockwise
+// oval, then the inward turn and the rising exit to the right.
+const O_OVAL='M 308 85 C 286 62 257 54 228 54 C 149 54 85 134 85 242 C 85 360 135 439 220 439 C 308 441 365 381 365 265 C 365 183 347 119 308 85';
+const O_LOOP='M 308 85 C 282 65 244 71 228 103 C 209 142 226 193 281 193 C 343 193 405 148 432 105';
+const O_PATH=O_OVAL+' C 282 65 244 71 228 103 C 209 142 226 193 281 193 C 343 193 405 148 432 105';
+
+// Centreline traced from the supplied model. The stem is intentionally
+// retraced: entrance, downstroke, return up the stem, then the open arch.
+const P_ENTRY='M 121 298 C 150 307 170 255 194 187 C 207 149 215 124 216 100 L 216 52';
+const P_DOWN='M 216 52 L 216 477';
+const P_UP='M 216 477 L 216 170';
+const P_CURVE='M 216 170 C 216 137 231 116 257 116 C 287 112 301 138 301 174 L 301 260 C 300 286 315 301 338 301 C 379 301 405 271 405 221';
+const P_PATH=P_ENTRY+' L 216 477 L 216 170 C 216 137 231 116 257 116 C 287 112 301 138 301 174 L 301 260 C 300 286 315 301 338 301 C 379 301 405 271 405 221';
+// Draw each visible guide once so the retraced stem has clear black dashes.
+const P_GUIDE='M 121 298 C 150 307 170 255 194 187 C 207 149 215 124 216 100 M 216 52 L 216 477 '+P_CURVE;
+// Lowercase a: complete the oval, rise to the top, then descend and exit.
+const A_OVAL='M 391 171 C 370 115 324 95 272 95 C 186 95 137 173 137 274 C 137 390 182 470 261 470 C 343 470 391 405 391 310 L 391 87';
+const A_EXIT='M 391 87 L 391 418 C 391 454 406 470 439 470 C 485 470 500 420 511 378';
+const A_PATH=A_OVAL+' L 391 418 C 391 454 406 470 439 470 C 485 470 500 420 511 378';
+const A_GUIDE='M 391 171 C 370 115 324 95 272 95 C 186 95 137 173 137 274 C 137 390 182 470 261 470 C 343 470 391 405 391 310 '+A_EXIT;
+
+// Capital A is two physical strokes, as shown by its two starting dots.
+const CAPITAL_A_MAIN='M 108 458 C 71 453 65 536 93 577 C 106 599 138 601 167 579 C 222 548 243 405 267 238 C 283 128 294 30 313 30 C 341 26 343 146 354 277 C 365 390 351 509 407 566 C 446 615 506 588 522 541 C 547 479 519 422 493 418';
+const CAPITAL_A_BAR='M 197 348 C 231 302 287 362 338 361 C 373 364 395 337 409 311';
+const CAPITAL_A_PATH=CAPITAL_A_MAIN+' '+CAPITAL_A_BAR;
+
+// Capital P follows the separate stem and upper-loop strokes in the model.
+const CAPITAL_P_STEM='M 258 82 C 211 128 207 175 216 246 C 226 323 260 397 260 445 C 260 502 237 539 185 547 C 133 555 81 524 85 476 C 85 449 98 433 114 419';
+const CAPITAL_P_TOP='M 177 249 C 118 287 82 232 82 177 C 82 92 164 36 269 36 C 363 36 419 79 420 151 C 421 208 389 244 339 251 C 305 259 282 236 270 208';
+const CAPITAL_P_PATH=CAPITAL_P_STEM+' '+CAPITAL_P_TOP;
+
+// Capital I follows the model's wavy top and curved lower finish.
+const CAPITAL_I_TOP='M 126 166 C 92 123 126 70 155 70 C 206 65 238 126 312 94';
+const CAPITAL_I_STEM='M 312 94 C 302 220 301 357 311 478 C 321 561 286 619 216 619 C 151 620 107 582 107 518 C 107 465 151 424 185 424 C 201 423 213 430 220 439';
+const CAPITAL_I_PATH=CAPITAL_I_TOP+' C 302 220 301 357 311 478 C 321 561 286 619 216 619 C 151 620 107 582 107 518 C 107 465 151 424 185 424 C 201 423 213 430 220 439';
+
+// Capital O is open at the top and finishes with the inward curl shown.
+const CAPITAL_O_OVAL='M 223 46 C 125 60 54 166 54 291 C 54 435 106 555 244 555 C 374 555 435 469 435 315';
+const CAPITAL_O_TURN='M 435 315 C 435 184 382 70 303 70 C 234 67 191 141 228 224';
+const CAPITAL_O_PATH=CAPITAL_O_OVAL+' C 435 184 382 70 303 70 C 234 67 191 141 228 224';
+
+const LETTERS={
+"d":{"path":"M 275 326 C 253 294 225 282 190 282 C 131 282 88 340 88 414 C 88 480 128 533 184 533 C 236 533 276 485 276 433 L 276 57 L 276 487 C 276 516 291 526 316 526 C 353 526 376 497 376 458","guide":"M 275 326 C 253 294 225 282 190 282 C 131 282 88 340 88 414 C 88 480 128 533 184 533 C 236 533 276 485 276 433 M 276 57 L 276 487 C 276 516 291 526 316 526 C 353 526 376 497 376 458","viewBox":"20 0 440 620","phases":["M 275 326 C 253 294 225 282 190 282 C 131 282 88 340 88 414 C 88 480 128 533 184 533 C 236 533 276 485 276 433 L 276 57","M 276 57 L 276 487 C 276 516 291 526 316 526 C 353 526 376 497 376 458"],"arrowRatios":[[0.12,0.44,0.72,0.91],[0.23,0.8]],"hints":["1 · Dá a volta ao oval e sobe pela haste.","2 · Desce e faz a curva para a direita."],"rows":[{"y":57,"stroke":"#a9d9f7","width":2},{"y":282,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":533,"stroke":"#77bfea","width":2.6},{"y":590,"stroke":"#a9d9f7","width":2}]},
+"D":{"path":"M 366 51 C 296 80 221 169 220 296 L 220 393 C 220 501 202 568 127 570 C 82 574 46 551 46 519 C 46 483 69 465 100 466 C 168 467 262 580 331 580 C 425 580 479 457 479 333 C 479 168 408 57 252 57 C 135 57 64 119 64 200 C 64 248 81 280 113 280 C 141 281 159 269 164 243","buttonId":"chooseCapitalD","viewBox":"0 0 550 660","phases":["M 366 51 C 296 80 221 169 220 296 L 220 393 C 220 501 202 568 127 570 C 82 574 46 551 46 519 C 46 483 69 465 100 466","M 100 466 C 168 467 262 580 331 580 C 425 580 479 457 479 333 C 479 168 408 57 252 57 C 135 57 64 119 64 200 C 64 248 81 280 113 280 C 141 281 159 269 164 243"],"arrowRatios":[[0.1,0.4,0.78],[0.23,0.5,0.83]],"hints":["1 · Desce pela haste e faz o laço de baixo.","2 · Continua pela volta grande até ao fim."],"rows":[{"y":57,"stroke":"#a9d9f7","width":2},{"y":320,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":580,"stroke":"#77bfea","width":2.6},{"y":630,"stroke":"#a9d9f7","width":2}]},
+"t":{"path":"M 102 578 C 138 526 166 479 166 407 L 166 78 L 166 454 C 166 516 187 569 225 569 C 257 569 281 547 297 521 M 97 186 L 254 186","guide":"M 102 578 C 138 526 166 479 166 407 M 166 78 L 166 454 C 166 516 187 569 225 569 C 257 569 281 547 297 521 M 97 186 L 254 186","viewBox":"10 0 380 650","phases":["M 102 578 C 138 526 166 479 166 407 L 166 78","M 166 78 L 166 454 C 166 516 187 569 225 569 C 257 569 281 547 297 521","M 97 186 L 254 186"],"strokes":["M 102 578 C 138 526 166 479 166 407 L 166 78 L 166 454 C 166 516 187 569 225 569 C 257 569 281 547 297 521","M 97 186 L 254 186"],"liftBefore":[2],"arrowRatios":[[0.25,0.7],[0.25,0.8],[0.45]],"hints":["1 · Começa em baixo e sobe pela haste.","2 · Desce e termina com a curva.","3 · Levanta o dedo ou o rato. Começa na nova bolinha e faz a barra."],"rows":[{"y":78,"stroke":"#a9d9f7","width":2},{"y":186,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":569,"stroke":"#77bfea","width":2.6},{"y":620,"stroke":"#a9d9f7","width":2}]},
+"T":{"path":"M 342 102 C 313 145 296 181 296 226 C 296 312 307 417 307 458 C 307 520 284 561 238 562 C 183 566 143 535 143 489 C 143 462 160 442 185 435 M 246 214 C 223 245 181 249 148 232 C 96 214 100 165 120 120 C 141 77 176 56 230 56 C 296 56 330 94 376 92 C 456 105 516 98 552 63","buttonId":"chooseCapitalT","viewBox":"0 0 610 640","phases":["M 342 102 C 313 145 296 181 296 226 C 296 312 307 417 307 458 C 307 520 284 561 238 562 C 183 566 143 535 143 489 C 143 462 160 442 185 435","M 246 214 C 223 245 181 249 148 232 C 96 214 100 165 120 120 C 141 77 176 56 230 56 C 296 56 330 94 376 92 C 456 105 516 98 552 63"],"strokes":["M 342 102 C 313 145 296 181 296 226 C 296 312 307 417 307 458 C 307 520 284 561 238 562 C 183 566 143 535 143 489 C 143 462 160 442 185 435","M 246 214 C 223 245 181 249 148 232 C 96 214 100 165 120 120 C 141 77 176 56 230 56 C 296 56 330 94 376 92 C 456 105 516 98 552 63"],"liftBefore":[1],"arrowRatios":[[0.2,0.57,0.84],[0.16,0.49,0.82]],"hints":["1 · Desce pela haste e faz a volta de baixo.","2 · Levanta o dedo ou o rato. Faz a volta de cima a partir da nova bolinha."],"rows":[{"y":56,"stroke":"#a9d9f7","width":2},{"y":310,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":562,"stroke":"#77bfea","width":2.6},{"y":610,"stroke":"#a9d9f7","width":2}]},
+"l":{"path":"M 96 563 C 151 446 231 259 230 139 C 230 94 213 74 184 74 C 157 74 145 100 145 135 L 156 474 C 157 525 172 551 209 551 C 254 551 284 511 286 462","viewBox":"20 0 360 650","phases":["M 96 563 C 151 446 231 259 230 139 C 230 94 213 74 184 74","M 184 74 C 157 74 145 100 145 135 L 156 474 C 157 525 172 551 209 551 C 254 551 284 511 286 462"],"arrowRatios":[[0.25,0.69],[0.28,0.75]],"hints":["1 · Sobe pelo laço até ao cimo.","2 · Desce pela haste e faz a curva para a direita."],"rows":[{"y":74,"stroke":"#a9d9f7","width":2},{"y":326,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":551,"stroke":"#77bfea","width":2.6},{"y":610,"stroke":"#a9d9f7","width":2}]},
+"L":{"path":"M 181 97 C 128 123 96 166 96 197 C 96 255 146 275 226 264 C 305 253 350 205 373 141 C 393 83 366 50 340 51 C 286 51 258 134 258 206 C 258 307 275 433 250 510 C 239 554 215 576 158 576 C 115 576 99 556 99 533 C 99 500 120 481 152 481 C 218 481 336 576 416 576 C 477 576 514 533 514 477 C 514 426 477 385 419 385 C 386 385 365 405 347 430","buttonId":"chooseCapitalL","viewBox":"20 0 550 650","phases":["M 181 97 C 128 123 96 166 96 197 C 96 255 146 275 226 264 C 305 253 350 205 373 141 C 393 83 366 50 340 51","M 340 51 C 286 51 258 134 258 206 C 258 307 275 433 250 510 C 239 554 215 576 158 576 C 115 576 99 556 99 533 C 99 500 120 481 152 481","M 152 481 C 218 481 336 576 416 576 C 477 576 514 533 514 477 C 514 426 477 385 419 385 C 386 385 365 405 347 430"],"arrowRatios":[[0.2,0.72],[0.32,0.79],[0.2,0.69]],"hints":["1 · Faz a primeira volta e sobe pelo laço.","2 · Desce pela haste e faz o laço de baixo.","3 · Continua para a direita e termina com a volta."],"rows":[{"y":51,"stroke":"#a9d9f7","width":2},{"y":310,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":576,"stroke":"#77bfea","width":2.6},{"y":625,"stroke":"#a9d9f7","width":2}]},
+"m":{"path":"M 126 420 L 126 209 C 126 133 151 78 191 78 C 231 78 260 135 260 209 L 260 420 L 260 210 C 260 133 287 78 326 78 C 366 78 394 135 394 210 L 394 420 L 394 210 C 394 133 422 78 460 78 C 500 78 528 135 528 210 L 528 337 C 528 390 535 420 555 420 C 580 420 594 374 595 339","guide":"M 126 420 L 126 209 C 126 133 151 78 191 78 C 231 78 260 135 260 209 L 260 420 M 260 210 C 260 133 287 78 326 78 C 366 78 394 135 394 210 L 394 420 M 394 210 C 394 133 422 78 460 78 C 500 78 528 135 528 210 L 528 337 C 528 390 535 420 555 420 C 580 420 594 374 595 339","viewBox":"60 0 610 510","phases":["M 126 420 L 126 209 C 126 133 151 78 191 78 C 231 78 260 135 260 209 L 260 420","M 260 420 L 260 210 C 260 133 287 78 326 78 C 366 78 394 135 394 210 L 394 420","M 394 420 L 394 210 C 394 133 422 78 460 78 C 500 78 528 135 528 210 L 528 337 C 528 390 535 420 555 420 C 580 420 594 374 595 339"],"arrowRatios":[[0.17,0.47,0.82],[0.17,0.47,0.82],[0.15,0.43,0.77]],"hints":["1 · Sobe, faz o primeiro arco e desce.","2 · Volta a subir, faz o segundo arco e desce.","3 · Sobe, faz o último arco e termina à direita."],"rows":[{"y":78,"stroke":"#a9d9f7","width":2},{"y":250,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":420,"stroke":"#77bfea","width":2.6},{"y":480,"stroke":"#a9d9f7","width":2}]},
+"M":{"path":"M 95 429 C 54 420 35 473 39 521 C 42 570 60 595 87 595 C 131 595 149 555 158 474 C 171 362 188 170 203 68 L 264 573 L 341 60 L 374 495 C 379 569 399 596 431 596 C 459 596 479 563 479 529 C 479 506 467 489 456 487","buttonId":"chooseCapitalM","viewBox":"0 0 550 690","phases":["M 95 429 C 54 420 35 473 39 521 C 42 570 60 595 87 595 C 131 595 149 555 158 474 C 171 362 188 170 203 68","M 203 68 L 264 573 L 341 60","M 341 60 L 374 495 C 379 569 399 596 431 596 C 459 596 479 563 479 529 C 479 506 467 489 456 487"],"arrowRatios":[[0.15,0.6],[0.28,0.78],[0.3,0.85]],"hints":["1 · Faz a primeira curva e sobe até ao cimo.","2 · Desce até ao fundo e sobe à segunda ponta.","3 · Desce e termina com a curva da direita."],"rows":[{"y":60,"stroke":"#a9d9f7","width":2},{"y":330,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":595,"stroke":"#77bfea","width":2.6},{"y":655,"stroke":"#a9d9f7","width":2}]},
+"v":{"path":"M 101 466 L 101 178 C 101 116 125 85 164 85 C 202 85 222 124 222 178 L 222 406 C 222 442 233 462 260 462 C 354 462 425 351 454 192 C 467 142 454 93 416 87 C 374 82 331 126 331 174 C 331 216 350 236 390 236 C 445 236 499 212 532 186","viewBox":"30 0 570 550","phases":["M 101 466 L 101 178 C 101 116 125 85 164 85 C 202 85 222 124 222 178 L 222 406 C 222 442 233 462 260 462","M 260 462 C 354 462 425 351 454 192 C 467 142 454 93 416 87","M 416 87 C 374 82 331 126 331 174 C 331 216 350 236 390 236 C 445 236 499 212 532 186"],"arrowRatios":[[0.19,0.55,0.83],[0.3,0.75],[0.3,0.76]],"hints":["1 · Sobe, faz o primeiro arco e desce.","2 · Faz a curva de baixo e sobe pelo outro lado.","3 · Faz o pequeno laço e termina à direita."],"rows":[{"y":85,"stroke":"#a9d9f7","width":2},{"y":270,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":462,"stroke":"#77bfea","width":2.6},{"y":515,"stroke":"#a9d9f7","width":2}]},
+"V":{"path":"M 54 143 C 28 78 62 49 92 64 C 127 78 112 111 147 113 C 173 116 188 87 200 59 L 265 538 C 281 420 313 234 372 126 C 405 65 431 62 450 62 C 500 62 524 113 498 161","buttonId":"chooseCapitalV","viewBox":"0 0 600 640","phases":["M 54 143 C 28 78 62 49 92 64 C 127 78 112 111 147 113 C 173 116 188 87 200 59","M 200 59 L 265 538 C 281 420 313 234 372 126 C 405 65 431 62 450 62","M 450 62 C 500 62 524 113 498 161"],"arrowRatios":[[0.28,0.72],[0.25,0.72],[0.6]],"hints":["1 · Faz a pequena volta de cima.","2 · Desce até à ponta e sobe pelo outro lado.","3 · Termina com a curva de cima."],"rows":[{"y":59,"stroke":"#a9d9f7","width":2},{"y":300,"stroke":"#f6a5cb","width":2,"dash":"9 7"},{"y":538,"stroke":"#77bfea","width":2.6},{"y":600,"stroke":"#a9d9f7","width":2}]},
+
+  I:{path:CAPITAL_I_PATH,buttonId:'chooseCapitalI',viewBox:'40 0 360 690',
+    phases:[CAPITAL_I_TOP,CAPITAL_I_STEM],arrowRatios:[[.28,.78],[.20,.58,.84]],
+    hints:['1 · Faz a volta e segue pela parte de cima.',
+           '2 · Desce pela haste e faz a volta de baixo.'],
+    rows:[{y:70,stroke:'#a9d9f7',width:2},{y:344,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:619,stroke:'#77bfea',width:2.6},{y:660,stroke:'#a9d9f7',width:2}]},
+  O:{path:CAPITAL_O_PATH,buttonId:'chooseCapitalO',viewBox:'0 0 520 640',
+    phases:[CAPITAL_O_OVAL,CAPITAL_O_TURN],arrowRatios:[[.22,.62,.87],[.30,.75]],
+    hints:['1 · Desce pela esquerda e dá a volta ao oval.',
+           '2 · Continua a subir e termina com a volta para dentro.'],
+    rows:[{y:46,stroke:'#a9d9f7',width:2},{y:300,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:555,stroke:'#77bfea',width:2.6},{y:600,stroke:'#a9d9f7',width:2}]},
+  P:{path:CAPITAL_P_PATH,buttonId:'chooseCapitalP',viewBox:'0 0 500 640',
+    phases:[CAPITAL_P_STEM,CAPITAL_P_TOP],strokes:[CAPITAL_P_STEM,CAPITAL_P_TOP],liftBefore:[1],
+    arrowRatios:[[.20,.50,.82],[.16,.49,.80]],
+    hints:['1 · Desce pela haste e faz a volta de baixo.',
+           '2 · Levanta o dedo ou o rato. Começa na nova bolinha e faz a volta de cima.'],
+    rows:[{y:36,stroke:'#a9d9f7',width:2},{y:290,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:548,stroke:'#77bfea',width:2.6},{y:600,stroke:'#a9d9f7',width:2}]},
+  a:{path:A_PATH,guide:A_GUIDE,viewBox:'50 0 540 570',phases:[A_OVAL,A_EXIT],
+    arrowRatios:[[.10,.35,.65,.88],[.23,.80]],
+    hints:['1 · Dá a volta ao oval e sobe até ao cimo.',
+           '2 · Desce pela haste e termina à direita.'],
+    rows:[{y:87,stroke:'#a9d9f7',width:2},{y:278,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:470,stroke:'#77bfea',width:2.6},{y:530,stroke:'#a9d9f7',width:2}]},
+  A:{path:CAPITAL_A_PATH,buttonId:'chooseCapitalA',viewBox:'0 -15 600 695',
+    phases:[CAPITAL_A_MAIN,CAPITAL_A_BAR],strokes:[CAPITAL_A_MAIN,CAPITAL_A_BAR],liftBefore:[1],
+    arrowRatios:[[.15,.40,.65,.88],[.35,.80]],
+    hints:['1 · Segue o traçado principal até ao fim.',
+           '2 · Levanta o dedo ou o rato. Começa na nova bolinha e faz a barra.'],
+    rows:[{y:30,stroke:'#a9d9f7',width:2},{y:340,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:589,stroke:'#77bfea',width:2.6},{y:640,stroke:'#a9d9f7',width:2}]},
+  e:{path:E_PATH,viewBox:'0 0 560 540',phases:[E_RISE,E_RETURN],
+    arrowRatios:[[.38,.78],[.28,.72]],
+    hints:['1 · Sobe pelo laço até ao cimo.',
+           '2 · Desce pelo laço e termina à direita.'],
+    rows:[{y:48,stroke:'#a9d9f7',width:2},{y:233,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:419,stroke:'#77bfea',width:2.6},{y:490,stroke:'#a9d9f7',width:2}]},
+  i:{path:I_PATH,guide:I_GUIDE,viewBox:'0 0 440 660',phases:[I_ENTRY,I_EXIT],
+    dot:{x:211,y:102,r:34},arrowRatios:[[.30,.72],[.26,.75]],
+    hints:['1 · Começa à esquerda e sobe pela haste.',
+           '2 · Desce e faz a curva para a direita.'],
+    rows:[{y:181,stroke:'#a9d9f7',width:2},{y:360,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:540,stroke:'#77bfea',width:2.6},{y:610,stroke:'#a9d9f7',width:2}]},
+  E:{path:CAPITAL_E_PATH,buttonId:'chooseCapitalE',viewBox:'0 0 440 700',
+    phases:[CAPITAL_E_TOP,CAPITAL_E_MIDDLE,CAPITAL_E_BOTTOM],
+    arrowRatios:[[.15,.49,.85],[.35,.74],[.19,.48,.80]],
+    hints:['1 · Segue a primeira volta e faz o laço de cima.',
+           '2 · Faz a pequena volta do meio.',
+           '3 · Continua pela volta de baixo até ao fim.'],
+    rows:[{y:69,stroke:'#a9d9f7',width:2},{y:320,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:618,stroke:'#77bfea',width:2.6},{y:660,stroke:'#a9d9f7',width:2}]},
+  u:{path:U_PATH,guide:U_GUIDE,viewBox:'0 0 620 590',phases:[U_ENTRY,U_BOWL,U_EXIT],
+    arrowRatios:[[.30,.75],[.22,.70],[.25,.80]],
+    hints:['1 · Começa à esquerda e sobe até ao cimo.',
+           '2 · Desce, faz a curva e sobe pela segunda haste.',
+           '3 · Desce e faz a última curva para a direita.'],
+    rows:[{y:92,stroke:'#a9d9f7',width:2},{y:285,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:485,stroke:'#77bfea',width:2.6},{y:545,stroke:'#a9d9f7',width:2}]},
+  U:{path:CAPITAL_U_PATH,guide:CAPITAL_U_GUIDE,buttonId:'chooseCapitalU',viewBox:'0 0 560 660',
+    phases:[CAPITAL_U_START,CAPITAL_U_RISE,CAPITAL_U_EXIT],
+    arrowRatios:[[.18,.55,.88],[.25,.72],[.20,.70,.89]],
+    hints:['1 · Faz a primeira volta e desce até à curva.',
+           '2 · Sobe pela segunda haste até ao cimo.',
+           '3 · Desce e termina com a volta da direita.'],
+    rows:[{y:42,stroke:'#a9d9f7',width:2},{y:300,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:568,stroke:'#77bfea',width:2.6},{y:620,stroke:'#a9d9f7',width:2}]},
+  o:{path:O_PATH,viewBox:'0 0 520 550',phases:[O_OVAL,O_LOOP],
+    arrowRatios:[[.085,.34,.72],[.25,.74]],
+    hints:['1 · Dá a volta ao oval, seguindo as setas.',
+           '2 · Faz a voltinha e sai para a direita.'],
+    rows:[{y:54,stroke:'#a9d9f7',width:2},
+          {y:246,stroke:'#f6a5cb',width:2,dash:'9 7'},
+          {y:439,stroke:'#77bfea',width:2.6},
+          {y:500,stroke:'#a9d9f7',width:2}]},
+  p:{path:P_PATH,guide:P_GUIDE,viewBox:'0 0 520 550',
+    phases:[P_ENTRY,P_DOWN,P_UP,P_CURVE],
+    hints:['1 · Começa na bolinha e sobe até ao cimo.',
+           '2 · Desce pela haste até ao fundo.',
+           '3 · Sobe pela mesma haste até à curva.',
+           '4 · Faz a curva e termina à direita.']}
+};
+
+let letter='d',len=0,progress=0,phaseIndex=0,phases=[];
+let dragging=false,done=false,awaitDot=false,sound=true,audioCtx=null;
+let activePointer=null,lastPointer=null;
+let assisted=true,demoActive=false,demoFrame=0,demoTimer=0;
+let strokePaints=[],tracePoints=[],geometryPoints=[];
+const multiPaint=document.createElementNS(NS,'g');
+guide.before(multiPaint);
+const measure=document.createElementNS(NS,'path');
+svg.querySelector('defs').appendChild(measure);
+
+// Cache smooth centreline samples without repeatedly asking the SVG renderer
+// to recalculate a long, self-crossing curve during a pupil's pointer movement.
+function buildTraceGeometry(path){
+  const tokens=path.match(/[MLC]|-?\d+(?:\.\d+)?/g)||[];
+  const points=[];let i=0,position={x:0,y:0},distance=0;
+  const add=(p,move=false)=>{
+    if(points.length&&!move)distance+=Math.hypot(p.x-position.x,p.y-position.y);
+    points.push({length:distance,point:p});position=p;
+  };
+  while(i<tokens.length){
+    const command=tokens[i++];
+    if(command==='M')add({x:Number(tokens[i++]),y:Number(tokens[i++])},true);
+    else if(command==='L')add({x:Number(tokens[i++]),y:Number(tokens[i++])});
+    else if(command==='C'){
+      const a=position,b={x:Number(tokens[i++]),y:Number(tokens[i++])},
+        c={x:Number(tokens[i++]),y:Number(tokens[i++])},d={x:Number(tokens[i++]),y:Number(tokens[i++])};
+      for(let k=1;k<=64;k++){
+        const t=k/64,v=1-t;
+        add({x:v*v*v*a.x+3*v*v*t*b.x+3*v*t*t*c.x+t*t*t*d.x,
+             y:v*v*v*a.y+3*v*v*t*b.y+3*v*t*t*c.y+t*t*t*d.y});
+      }
+    }else throw Error('Traçado desconhecido');
+  }
+  const scale=len/distance;
+  geometryPoints=points.map(p=>({length:p.length*scale,point:p.point}));
+}
+
+// Fit the complete letter, including its wide outline and any dot, to the
+// writing area instead of reserving the empty margins of the source model.
+function fitLetterToWritingArea(config){
+  let left=Infinity,top=Infinity,right=-Infinity,bottom=-Infinity;
+  for(const sample of geometryPoints){
+    const p=sample.point;
+    left=Math.min(left,p.x);right=Math.max(right,p.x);
+    top=Math.min(top,p.y);bottom=Math.max(bottom,p.y);
+  }
+  const halfStroke=29;
+  left-=halfStroke;right+=halfStroke;top-=halfStroke;bottom+=halfStroke;
+  if(config.dot){
+    const d=config.dot;
+    left=Math.min(left,d.x-d.r);right=Math.max(right,d.x+d.r);
+    top=Math.min(top,d.y-d.r);bottom=Math.max(bottom,d.y+d.r);
+  }
+  const margin=16;
+  svg.setAttribute('viewBox',`${left-margin} ${top-margin} ${right-left+margin*2} ${bottom-top+margin*2}`);
+}
+
+function at(length){
+  length=Math.max(0,Math.min(len,length));
+  let low=0,high=geometryPoints.length-1;
+  while(low<high){const mid=Math.ceil((low+high)/2);if(geometryPoints[mid].length<=length)low=mid;else high=mid-1}
+  const a=geometryPoints[low],b=geometryPoints[Math.min(low+1,geometryPoints.length-1)];
+  const ratio=b.length>a.length?(length-a.length)/(b.length-a.length):0;
+  return {x:a.point.x+(b.point.x-a.point.x)*ratio,y:a.point.y+(b.point.y-a.point.y)*ratio};
+}
+function dist(a,b){return Math.hypot(a.x-b.x,a.y-b.y)}
+function pos(e){
+  const p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;
+  const m=svg.getScreenCTM();return m?p.matrixTransform(m.inverse()):{x:-999,y:-999};
+}
+function tone(freq=650){
+  if(!sound)return;
+  try{
+    audioCtx??=new(window.AudioContext||window.webkitAudioContext)();
+    if(audioCtx.state==='suspended')audioCtx.resume();
+    const o=audioCtx.createOscillator(),g=audioCtx.createGain();
+    o.type='sine';o.frequency.value=freq;
+    g.gain.setValueAtTime(.0001,audioCtx.currentTime);
+    g.gain.exponentialRampToValueAtTime(.10,audioCtx.currentTime+.015);
+    g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+.16);
+    o.connect(g).connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+.17);
+  }catch{}
+}
+function setHint(){
+  hint.textContent=LETTERS[letter].hints?.[phaseIndex]||'👆 Começa na bolinha rosa e segue o tracejado!';
+}
+function makeArrows(){
+  arrows.replaceChildren();
+  const phase=phases[phaseIndex]||{start:0,end:len};
+  const ratios=LETTERS[letter].arrowRatios?.[phaseIndex]||(letter==='p'?[.24,.58,.85]:[.19,.39,.61,.84]);
+  for(const ratio of ratios){
+    const length=phase.start+(phase.end-phase.start)*ratio;
+    const p=at(length),q=at(Math.min(phase.end,length+3));
+    const a=Math.atan2(q.y-p.y,q.x-p.x)*180/Math.PI;
+    const el=document.createElementNS(NS,'path');
+    el.setAttribute('d',LETTERS[letter].hints?'M -8 -5 L 2 0 L -8 5 Z':'M -10 -6 L 2 0 L -10 6 Z');
+    el.setAttribute('transform',`translate(${p.x} ${p.y}) rotate(${a})`);
+    el.setAttribute('class','arrow');arrows.appendChild(el);
+  }
+}
+function draw(){
+  paint.style.strokeDashoffset=Math.max(0,len-progress);
+  for(const stroke of strokePaints){
+    const local=Math.max(0,Math.min(stroke.length,progress-stroke.offset));
+    stroke.el.style.strokeDashoffset=stroke.length-local;
+  }
+  const p=at(progress);tip.setAttribute('cx',p.x);tip.setAttribute('cy',p.y);
+  const showPhaseStart=LETTERS[letter].liftBefore?.includes(phaseIndex)&&progress<phases[phaseIndex].start+20;
+  start.style.opacity=progress<20||showPhaseStart?1:0;
+  hint.style.opacity=LETTERS[letter].hints||progress<30?1:0;
+}
+function stop(){dragging=false;activePointer=null;lastPointer=null}
+function finish(){
+  if(letter==='i'&&!awaitDot){
+    awaitDot=true;stop();tip.style.opacity=0;arrows.style.opacity=0;
+    hint.textContent='👆 Toca no ponto do i para terminar!';hint.style.opacity=1;
+    dotGuide.style.opacity=1;tone(740);return;
+  }
+  done=true;stop();tip.style.opacity=0;arrows.style.opacity=0;guide.style.opacity=0;
+  hint.textContent=`⭐ Muito bem! Escreveste a letra ${letter}!`;hint.style.opacity=1;
+  document.getElementById('successMessage').textContent=`Fizeste a letra ${letter}!`;
+  celebrate.setAttribute('aria-hidden','false');celebrate.classList.add('show');
+  for(let i=0;i<12;i++){
+    const s=document.createElement('span');s.className='spark';s.textContent=['⭐','✨','💛','🌟'][i%4];
+    s.style.setProperty('--x',`${(i%2?-1:1)*(40+(i*37)%320)}px`);
+    s.style.setProperty('--y',`${(i%3?-1:1)*(30+(i*43)%220)}px`);
+    celebrate.appendChild(s);setTimeout(()=>s.remove(),1700);
+  }
+  tone(784);setTimeout(()=>tone(988),130);setTimeout(()=>tone(1175),270);
+}
+function nextPhase(){
+  if(phaseIndex+1<phases.length){
+    phaseIndex++;
+    if(LETTERS[letter].liftBefore?.includes(phaseIndex)){
+      stop();progress=phases[phaseIndex].start+.05;
+      const first=at(progress);start.setAttribute('cx',first.x);start.setAttribute('cy',first.y);
+      draw();
+    }
+    setHint();makeArrows();tone(660+phaseIndex*50);
+  }
+  else{progress=len;draw();finish()}
+}
+function advance(e){
+  if(!dragging||done||e.pointerId!==activePointer)return;
+  const p=pos(e),movement=lastPointer?dist(p,lastPointer):0;lastPointer=p;
+  if(movement<.35)return;
+  const phase=phases[phaseIndex];
+  // Never jump over a reversal of direction, even at a crossing of the stem.
+  const max=Math.min(phase.end,progress+Math.min(90,Math.max(28,movement*1.7+8)));
+  let best=progress,bestDist=dist(p,at(progress));
+  for(let index=Math.ceil((progress+1)/2);index<tracePoints.length&&tracePoints[index].length<=max;index++){
+    const sample=tracePoints[index];
+    const distance=dist(p,sample.point);
+    if(distance<bestDist){bestDist=distance;best=sample.length}
+  }
+  const endDistance=dist(p,at(max));
+  if(endDistance<bestDist){bestDist=endDistance;best=max}
+  const tolerance=assisted?42:29;
+  if(bestDist<tolerance&&best>progress){
+    progress=best;draw();
+    if(phase.end-progress<6&&dist(p,phase.endPoint)<tolerance){
+      progress=phase.end;draw();nextPhase();
+    }
+  }
+}
+svg.addEventListener('pointerdown',e=>{
+  if(done||dragging||demoActive)return;
+  const p=pos(e);
+  if(awaitDot){
+    const targetDot=LETTERS[letter].dot||{x:244,y:77,r:29};
+    if(letter==='i'&&dist(p,targetDot)<targetDot.r+11){
+      dotPaint.style.display='';dotGuide.style.opacity=0;finish();e.preventDefault();
+    }
+    return;
+  }
+  if(e.pointerType==='mouse'&&e.button!==0)return;
+  if(dist(p,at(progress))<(assisted?56:35)){
+    dragging=true;activePointer=e.pointerId;lastPointer=p;
+    svg.setPointerCapture(e.pointerId);e.preventDefault();
+  }
+});
+svg.addEventListener('pointermove',e=>{if(dragging){
+  const samples=typeof e.getCoalescedEvents==='function'?e.getCoalescedEvents():[];
+  for(const sample of samples.length?samples:[e]){if(dragging)advance(sample)}
+  e.preventDefault();
+}});
+for(const type of ['pointerup','pointercancel','lostpointercapture']){
+  svg.addEventListener(type,e=>{if(e.pointerId===activePointer)stop()});
+}
+function reset(){
+  stopDemo();stop();progress=0;phaseIndex=0;done=false;awaitDot=false;
+  tip.style.opacity=1;arrows.style.opacity=1;guide.style.opacity=1;
+  dotPaint.style.display='none';dotGuide.style.opacity=1;
+  celebrate.classList.remove('show');celebrate.setAttribute('aria-hidden','true');celebrate.querySelectorAll('.spark').forEach(s=>s.remove());
+  const first=at(0);start.setAttribute('cx',first.x);start.setAttribute('cy',first.y);
+  setHint();makeArrows();draw();
+}
+function selectLetter(next){
+  if(!LETTERS[next])return;
+  letter=next;const config=LETTERS[letter];
+  svg.dataset.letter=letter;svg.setAttribute('viewBox',config.viewBox||'0 0 520 460');
+  svg.setAttribute('aria-label',`Letra ${letter} manuscrita: segue o tracejado preto dentro do contorno.`);
+  panel.classList.toggle('is-guided',Boolean(config.hints));
+  const rows=config.rows||(letter==='p'?[
+    {y:52,stroke:'#a9d9f7',width:2},
+    {y:116,stroke:'#f6a5cb',width:2,dash:'9 7'},
+    {y:301,stroke:'#77bfea',width:2.6},
+    {y:477,stroke:'#a9d9f7',width:2}
+  ]:defaultRows);
+  notebookLines.forEach((line,i)=>{
+    const row=rows[i];line.setAttribute('y1',row.y);line.setAttribute('y2',row.y);
+    line.setAttribute('stroke',row.stroke);line.setAttribute('stroke-width',row.width);
+    if(row.dash)line.setAttribute('stroke-dasharray',row.dash);else line.removeAttribute('stroke-dasharray');
+  });
+  for(const el of document.querySelectorAll('#letter > path')){
+    el.setAttribute('d',el===guide?config.guide||config.path:config.path);
+  }
+  len=shape.getTotalLength();paint.style.strokeDasharray=`${len} ${len}`;
+  buildTraceGeometry(config.path);
+  fitLetterToWritingArea(config);
+  tracePoints=[];for(let length=0;length<=len;length+=2){tracePoints.push({length,point:at(length)})}
+  multiPaint.replaceChildren();strokePaints=[];
+  paint.style.display=config.strokes?'none':'';
+  let strokeOffset=0;
+  for(const path of config.strokes||[]){
+    const el=document.createElementNS(NS,'path');el.setAttribute('d',path);el.setAttribute('class','written');
+    multiPaint.appendChild(el);const length=el.getTotalLength();
+    el.style.strokeDasharray=`${length} ${length}`;el.style.strokeDashoffset=length;
+    strokePaints.push({el,length,offset:strokeOffset});strokeOffset+=length;
+  }
+  let offset=0;
+  phases=(config.phases||[config.path]).map(path=>{
+    measure.setAttribute('d',path);const length=measure.getTotalLength();
+    const coordinates=path.match(/-?\d+(?:\.\d+)?/g).map(Number);
+    const phase={start:offset,end:offset+length,endPoint:{x:coordinates.at(-2),y:coordinates.at(-1)}};offset+=length;return phase;
+  });
+  // SVG curve length estimates differ slightly for split and joined paths.
+  const scale=len/offset;phases=phases.map(p=>({...p,start:p.start*scale,end:p.end*scale}));
+  phases[phases.length-1].end=len;
+  dot.style.display=letter==='i'?'':'none';
+  if(config.dot){
+    const d=config.dot;
+    for(const circle of dot.querySelectorAll('circle')){
+      circle.setAttribute('cx',d.x);circle.setAttribute('cy',d.y);
+      circle.setAttribute('r',circle.classList.contains('dot-outline')?d.r:
+        circle.classList.contains('dot-white')?d.r-4:
+        circle.classList.contains('dot-green')?d.r-5:d.r*.46);
+    }
+  }
+  for(const key of Object.keys(LETTERS)){
+    document.getElementById(LETTERS[key].buttonId||'choose'+key.toUpperCase()).setAttribute('aria-pressed',key===letter);
+  }
+  reset();
+}
+
+function stopDemo(){
+  demoActive=false;cancelAnimationFrame(demoFrame);clearTimeout(demoTimer);
+  document.getElementById('demo').textContent='▶ Ver como se faz';
+  document.getElementById('demo').setAttribute('aria-label','Ver como se faz');
+}
+function playDemo(){
+  if(demoActive){reset();return}
+  reset();demoActive=true;
+  const demoButton=document.getElementById('demo');
+  demoButton.textContent='■ Parar';demoButton.setAttribute('aria-label','Parar demonstração');
+  const runPhase=index=>{
+    if(!demoActive)return;
+    phaseIndex=index;progress=phases[index].start+(index&&LETTERS[letter].liftBefore?.includes(index)?0.05:0);
+    const first=at(progress);start.setAttribute('cx',first.x);start.setAttribute('cy',first.y);
+    setHint();hint.textContent='👀 '+hint.textContent;makeArrows();draw();
+    const phase=phases[index],duration=Math.max(1800,(phase.end-phase.start)*8);
+    let begin=null;
+    const tick=now=>{
+      if(!demoActive)return;
+      begin??=now;const ratio=Math.min(1,(now-begin)/duration);
+      progress=phase.start+(phase.end-phase.start)*ratio;draw();
+      if(ratio<1){demoFrame=requestAnimationFrame(tick);return}
+      if(index+1<phases.length){demoTimer=setTimeout(()=>runPhase(index+1),LETTERS[letter].liftBefore?.includes(index+1)?800:350)}
+      else{
+        if(letter==='i'){dotPaint.style.display='';dotGuide.style.opacity=0}
+        hint.textContent='⭐ Agora é a tua vez!';hint.style.opacity=1;
+        demoTimer=setTimeout(()=>{if(demoActive){reset();hint.textContent='👆 Agora faz tu! Começa na bolinha rosa.'}},1800);
+      }
+    };
+    demoFrame=requestAnimationFrame(tick);
+  };
+  runPhase(0);
+}
+document.getElementById('demo').addEventListener('click',playDemo);
+document.getElementById('assist').addEventListener('click',e=>{
+  assisted=!assisted;e.currentTarget.setAttribute('aria-pressed',assisted);
+  e.currentTarget.textContent=assisted?'🖐️ Com ajuda':'✏️ Mais precisão';
+  e.currentTarget.setAttribute('aria-label',assisted?'Mais ajuda no traçado':'Traçado com mais precisão');
+});
+
+document.getElementById('restart').addEventListener('click',reset);
+for(const key of Object.keys(LETTERS)){
+  document.getElementById(LETTERS[key].buttonId||'choose'+key.toUpperCase()).addEventListener('click',()=>selectLetter(key));
+}
+document.getElementById('sound').addEventListener('click',e=>{
+  sound=!sound;e.currentTarget.textContent=sound?'🔊':'🔇';
+  e.currentTarget.setAttribute('aria-label',sound?'Desativar som':'Ativar som');
+});
+for(let i=0;i<48;i++){
+  const s=document.createElement('i');s.className='star';
+  s.style.left=((i*37+11)%97)+'%';s.style.top=((i*59+7)%94)+'%';
+  s.style.setProperty('--dur',(1.2+(i%7)*.4)+'s');s.style.setProperty('--delay',(-i*.27)+'s');
+  document.getElementById('stars').appendChild(s);
+}
+
+const VOWEL_KEYS=new Set(['a','A','e','E','i','I','o','O','u','U']);
+function showLetterBank(bank,switchLetter=true){
+  const vowels=bank==='vowels';
+  document.getElementById('vowelBank').setAttribute('aria-pressed',vowels);
+  document.getElementById('consonantBank').setAttribute('aria-pressed',!vowels);
+  for(const key of Object.keys(LETTERS)){
+    document.getElementById(LETTERS[key].buttonId||'choose'+key.toUpperCase()).hidden=VOWEL_KEYS.has(key)!==vowels;
+  }
+  if(switchLetter&&VOWEL_KEYS.has(letter)!==vowels)selectLetter(vowels?'a':'p');
+}
+document.getElementById('vowelBank').addEventListener('click',()=>showLetterBank('vowels'));
+document.getElementById('consonantBank').addEventListener('click',()=>showLetterBank('consonants'));
+showLetterBank('consonants',false);
+selectLetter('d');
+
+
+</script></body></html>
